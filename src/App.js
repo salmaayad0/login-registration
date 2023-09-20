@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Regsiter from './components/Regsiter';
 import Login from './components/Login';
 import Home from './components/Home';
@@ -13,6 +12,7 @@ import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
 import { Routes, Route } from 'react-router-dom';
 
+
 const ROLLES = {
   'user': '2001',
   'editor': '1984',
@@ -21,7 +21,7 @@ const ROLLES = {
 
 function App() {
   return (
-    <Routes>
+       <Routes>
       <Route path="/" element={<Layout />} >
 
         {/* public routes */}

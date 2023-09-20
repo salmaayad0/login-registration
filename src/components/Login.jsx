@@ -3,6 +3,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import axios from "../api/axios";
 import useAuth from "../hooks/useAuth";
 
+import * as STYLE from "../styles/Style"
+
+
 // login api url
 const Login_URL = "/login";
 
@@ -53,7 +56,7 @@ function Login() {
 
         const accessToken = response?.data?.access;
         const roles = response?.data?.roles;
-        console.log(roles);
+        // console.log(roles);
         setAuth({ email, pwd, accessToken, roles })
       } catch (err) {
         if (!err?.response) {
@@ -70,21 +73,38 @@ function Login() {
   };
 
   return (
-        <section>
+        <section className={STYLE.SEC_STYLE}>
           <p
             ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
+            className={ errMsg 
+              ? STYLE.ERR_STYLE 
+              : "hidden"}
             aria-live="assertive"
           >
             {errMsg}
           </p>
-          <h1>Sign In</h1>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">E-mail:</label>
+          <div className="flex justify-center">
+          <h1 
+           className={STYLE.H1_STYLE}
+          >
+            Login
+          </h1>
+          </div>
+          <form 
+           className={STYLE.FORM_STYLE}
+           onSubmit={handleSubmit}
+          >
+            <label 
+             htmlFor="email" 
+             className={STYLE.LABEL_STYLE}
+            >
+              Email:
+            </label>
             <input
               type="email"
               id="email"
               name="user"
+              className={STYLE.INPUT_SRYLE}
               ref={emailRef}
               autoComplete="off"
               onChange={(e) => setEmail(e.target.value)}
@@ -92,21 +112,37 @@ function Login() {
               required
             />
 
-            <label htmlFor="password">Password:</label>
+            <label 
+             htmlFor="password" 
+             className={STYLE.LABEL_STYLE}
+            >
+              Password:
+            </label>
             <input
               type="password"
               id="password"
               name="pwd"
+              className={STYLE.INPUT_SRYLE}
               onChange={(e) => setPwd(e.target.value)}
               value={pwd}
               required
             />
-            <button>Sign In</button>
+            <button
+              type="submit"
+              disabled={!pwd || !email ? true : false}
+              className={
+                !pwd || !email
+                ? STYLE.DEACTIVE_STYLE
+                : STYLE.ACTIVE_STYLE
+              }
+            >
+              Sign In
+            </button>
           </form>
-          <p>
+          <p className={STYLE.TEXT_STYLE}>
             Create New Account
             <br />
-            <span className="line">
+            <span className={STYLE.LINK_STYLE}>
               {/*put router link here*/}
               <Link to={"/register"}>Sign Up</Link>
             </span>

@@ -6,7 +6,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../api/axios";
+import { Link } from "react-router-dom";
 
+// tailwindCSS style
+import * as STYLE from "../styles/Style"
+
+
+// regex patterns for regitration
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
@@ -113,38 +119,54 @@ function Regsiter() {
   return (
     <>
       {success ? (
-        <section>
-          <h2>Happy Sign up... success!</h2>
-          <p className="line">
+        <section className={STYLE.SEC_STYLE}>
+          <h2 className="text-center text-purple-700 font-extrabold">Happy Sign up... success!</h2>
+          <p className={STYLE.LINK_STYLE}>
             {/*put router link here*/}
-            <a href="/">Sign In</a>
+            <Link to={"/login"}>Sign In</Link>
           </p>
         </section>
       ) : (
-        <section>
+        <section className={STYLE.SEC_STYLE}>
           <p
             ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
+            className={errMsg 
+              ? STYLE.ERR_STYLE
+              : "hidden"
+            }
             aria-live="assertive"
           >
             {errMsg}
           </p>
-          <h1>Register</h1>
+          <div className="flex justify-center">
+          <h1 
+           className={STYLE.H1_STYLE}
+          >
+            Sign Up
+          </h1>
+          </div>
 
-          <form onSubmit={handleSubmit}>
+          <form  
+            className={STYLE.FORM_STYLE}
+            onSubmit={handleSubmit}
+          >
             {/* Username */}
-            <label htmlFor="username">
+            <label htmlFor="username" className={STYLE.LABEL_STYLE}>
               Username:
-              <span className={validName ? "valid" : "hide"}>
+              <span className={validName 
+                ? STYLE.GREEN_STYLE 
+                : "hidden"
+              }>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span className={validName || !user ? "hide" : "invalid"}>
+              <span className={validName || !user ? "hidden" : STYLE.RED_STYLE}>
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
               type="text"
               id="username"
+              className={STYLE.INPUT_SRYLE}
               autoComplete="off"
               aria-describedby="uidnote"
               aria-invalid={validName ? "false" : "true"}
@@ -158,10 +180,12 @@ function Regsiter() {
             <p
               id="uidnote"
               className={
-                user && userFocus && !validName ? "instructions" : "offscreen"
+                user && userFocus && !validName 
+                ? STYLE.INSTRUCTIONS 
+                : "hidden"
               }
             >
-              <FontAwesomeIcon icon={faInfoCircle} />
+              <FontAwesomeIcon icon={faInfoCircle} />{' '}
               4 to 24 charachter are allowed length <br />
               must start with a letter, letters, numbers,
               <br />
@@ -169,18 +193,19 @@ function Regsiter() {
             </p>
 
             {/* email */}
-            <label htmlFor="email">
-              E-mail:
-              <span className={validEmail ? "valid" : "hide"}>
+            <label htmlFor="email" className={STYLE.LABEL_STYLE}>
+              Email:
+              <span className={validEmail ? STYLE.GREEN_STYLE : "hidden"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span className={validEmail || !email ? "hide" : "invalid"}>
+              <span className={validEmail || !email ? "hidden" : STYLE.RED_STYLE}>
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
               type="email"
               id="email"
+              className={STYLE.INPUT_SRYLE}
               autoComplete="off"
               aria-describedby="eidnote"
               aria-invalid={validEmail ? "false" : "true"}
@@ -194,28 +219,29 @@ function Regsiter() {
               id="eidnote"
               className={
                 email && emailFocus && !validEmail
-                  ? "instructions"
-                  : "offscreen"
+                ? STYLE.INSTRUCTIONS 
+                : "hidden"
               }
             >
-              <FontAwesomeIcon icon={faInfoCircle} />
+              <FontAwesomeIcon icon={faInfoCircle} />{" "} 
               email must have @ <br />
               .com or .net at the end
             </p>
 
             {/* password */}
-            <label htmlFor="password">
+            <label htmlFor="password" className={STYLE.LABEL_STYLE}>
               Password:
-              <span className={validPwd ? "valid" : "hide"}>
+              <span className={validPwd ? STYLE.GREEN_STYLE : "hidden"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span className={validPwd || !pwd ? "hide" : "invalid"}>
+              <span className={validPwd || !pwd ? "hidden" : STYLE.RED_STYLE}>
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
               type="password"
               id="password"
+              className={STYLE.INPUT_SRYLE}
               autoComplete="off"
               aria-describedby="pwdidnote"
               aria-invalid={validPwd ? "false" : "true"}
@@ -227,9 +253,12 @@ function Regsiter() {
             />
             <p
               id="pwdidnote"
-              className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+              className={pwdFocus && !validPwd 
+                ? STYLE.INSTRUCTIONS 
+                : "hidden"
+              }
             >
-              <FontAwesomeIcon icon={faInfoCircle} />
+              <FontAwesomeIcon icon={faInfoCircle} />{' '}
               8 to 24 characters.
               <br />
               Must include uppercase and lowercase letters, a number and a
@@ -244,18 +273,19 @@ function Regsiter() {
             </p>
 
             {/* match password */}
-            <label htmlFor="confirmPWD">
+            <label htmlFor="confirmPWD" className={STYLE.LABEL_STYLE}>
               Confirm Password:
-              <span className={validMatch && matchPwd ? "valid" : "hide"}>
+              <span className={validMatch && matchPwd ? STYLE.GREEN_STYLE : "hidden"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
+              <span className={validMatch || !matchPwd ? "hidden" : STYLE.RED_STYLE}>
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
               type="password"
               id="confirmPWD"
+              className={STYLE.INPUT_SRYLE}
               autoComplete="off"
               aria-describedby="confirmidnote"
               aria-invalid={validMatch ? "false" : "true"}
@@ -268,29 +298,36 @@ function Regsiter() {
             <p
               id="confirmidnote"
               className={
-                matchFocus && !validMatch ? "instructions" : "offscreen"
+                matchFocus && !validMatch 
+                ? STYLE.INSTRUCTIONS
+                : "hidden"
               }
             >
-              <FontAwesomeIcon icon={faInfoCircle} /> Must match the first
-              password input field.
+              <FontAwesomeIcon icon={faInfoCircle} />{" "} 
+              Must match the first password input field.
             </p>
 
             {/* submit button */}
             <button
               type="submit"
               disabled={!validName || !validPwd || !validMatch ? true : false}
+              className={
+                !validName || !validPwd || !validMatch
+                ? STYLE.DEACTIVE_STYLE
+                : STYLE.ACTIVE_STYLE
+              }
             >
               Sign Up
             </button>
           </form>
 
           {/* sign in route */}
-          <p>
-            Already registered?
+          <p className={STYLE.TEXT_STYLE}>
+            Already Have An Account?
             <br />
-            <span className="line">
+            <span className={STYLE.LINK_STYLE}>
               {/*put router link here*/}
-              <a href="/">Sign In</a>
+              <Link to={"/login"}>Login</Link>
             </span>
           </p>
         </section>
