@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import axios from "../api/axios";
 import useAuth from "../hooks/useAuth";
 
 import * as STYLE from "../styles/Style"
+import Taps from "../taps/Taps";
 
 
 // login api url
@@ -74,6 +75,7 @@ function Login() {
 
   return (
         <section className={STYLE.SEC_STYLE}>
+             <Taps />
           <p
             ref={errRef}
             className={ errMsg 
@@ -83,14 +85,8 @@ function Login() {
           >
             {errMsg}
           </p>
-          <div className="flex justify-center">
-          <h1 
-           className={STYLE.H1_STYLE}
-          >
-            Login
-          </h1>
-          </div>
-          <form 
+
+         <form 
            className={STYLE.FORM_STYLE}
            onSubmit={handleSubmit}
           >
@@ -139,14 +135,7 @@ function Login() {
               Sign In
             </button>
           </form>
-          <p className={STYLE.TEXT_STYLE}>
-            Create New Account
-            <br />
-            <span className={STYLE.LINK_STYLE}>
-              {/*put router link here*/}
-              <Link to={"/register"}>Sign Up</Link>
-            </span>
-          </p>
+
         </section>
   );
 }

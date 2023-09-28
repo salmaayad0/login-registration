@@ -3,6 +3,7 @@ flex flex-col justify-start p-4
 border-1 border-slate-50 rounded-lg 
 w-full max-w-420 min-h-400
 bg-slate-100/30
+relative
 `;
 
 export const FORM_STYLE =`flex flex-col justify-evenly grow pb-4`;
@@ -30,7 +31,7 @@ mt-4 p-2 bg-indigo-950/60
 `;
 
 export const ERR_STYLE =`
-bg-pink-300/50 p-2 my-1
+bg-pink-300/50 p-1 mt-5
 text-red-600 font-semibold text-center  
 border border-pink-300/70 rounded
 `;
@@ -53,5 +54,17 @@ export const TEXT_STYLE = `text-blue-950 font-bold`;
 export const GREEN_STYLE = `ml-1 text-green-500 `;
 
 export const RED_STYLE = `ml-1 text-red-500`;
+
+
+
+// nav style
+export const NAV_STYLE = `
+w-full h-8
+text-indigo-950/60 bg-indigo-50/80
+border-1 border-slate-50 rounded-t-lg 
+absolute top-0 left-0
+`;
+
+
 
 

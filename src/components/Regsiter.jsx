@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 // tailwindCSS style
 import * as STYLE from "../styles/Style"
+import Taps from "../taps/Taps";
 
 
 // regex patterns for regitration
@@ -128,6 +129,7 @@ function Regsiter() {
         </section>
       ) : (
         <section className={STYLE.SEC_STYLE}>
+          <Taps />
           <p
             ref={errRef}
             className={errMsg 
@@ -138,13 +140,6 @@ function Regsiter() {
           >
             {errMsg}
           </p>
-          <div className="flex justify-center">
-          <h1 
-           className={STYLE.H1_STYLE}
-          >
-            Sign Up
-          </h1>
-          </div>
 
           <form  
             className={STYLE.FORM_STYLE}
@@ -320,16 +315,6 @@ function Regsiter() {
               Sign Up
             </button>
           </form>
-
-          {/* sign in route */}
-          <p className={STYLE.TEXT_STYLE}>
-            Already Have An Account?
-            <br />
-            <span className={STYLE.LINK_STYLE}>
-              {/*put router link here*/}
-              <Link to={"/login"}>Login</Link>
-            </span>
-          </p>
         </section>
       )}
     </>
