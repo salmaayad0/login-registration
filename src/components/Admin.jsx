@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom"
 import Users from "./Users"
+import * as STYLE from "../styles/Style"
+
 
 const Admin = () => {
     return (
-        <section>
-            <h1>Admins Page</h1>
-            <br />
+        <section className={STYLE.SEC_STYLE}>
+            <h1 className={STYLE.H1_STYLE}>Admins Page</h1>
             <div>
                 <Users />
             </div>
-            <div className="flexGrow">
+            <div className={STYLE.LINK_STYLE}>
                 <Link to="/">Home</Link>
             </div>
         </section>

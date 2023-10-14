@@ -4,6 +4,11 @@ const Background = styled.div`
 background: url('/media/img-11.jpg');
 background-size: contain;
 background-attachment: scroll;
+transition: all 1ms ease-in-out;
+
+&:hover section{
+    background-color: rgb(154,152,207);
+}
 `
 
 export default Background;

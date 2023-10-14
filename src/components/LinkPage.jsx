@@ -1,19 +1,21 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import * as STYLE from "../styles/Style"
 
 const LinkPage = () => {
     return (
-        <section>
-            <h1>Links</h1>
-            <br />
-            <h2>Public</h2>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-            <br />
-            <h2>Private</h2>
-            <Link to="/">Home</Link>
-            <Link to="/editor">Editors Page</Link>
-            <Link to="/admin">Admin Page</Link>
+        <section className={STYLE.SEC_STYLE}>
+            <h1 className={STYLE.H1_STYLE}>Links</h1>
+            <h2 className={STYLE.TEXT_STYLE}>Public</h2>
+            <Link 
+             to="/login"
+             className={STYLE.LINK_STYLE}
+            >Login</Link>
+            <Link to="/register" className={STYLE.LINK_STYLE}>Register</Link>
+            <h2 className={STYLE.TEXT_STYLE}>Private</h2>
+            <Link to="/" className={STYLE.LINK_STYLE}>Home</Link>
+            <Link to="/editor" className={STYLE.LINK_STYLE}>Editors Page</Link>
+            <Link to="/admin" className={STYLE.LINK_STYLE}>Admin Page</Link>
         </section>
     )
 }

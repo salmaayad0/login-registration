@@ -1,6 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
+import * as STYLE from "../styles/Style"
 
 const Home = () => {
     const { setAuth } = useContext(AuthContext);
@@ -14,19 +15,20 @@ const Home = () => {
     }
 
     return (
-        <section>
-            <h1>Home</h1>
-            <br />
-            <p>You are logged in!</p>
-            <br />
-            <Link to="/editor">Go to the Editor page</Link>
-            <br />
-            <Link to="/admin">Go to the Admin page</Link>
-            <br />
-            <Link to="/lounge">Go to the Lounge</Link>
-            <br />
-            <Link to="/linkpage">Go to the link page</Link>
-            <div className="flexGrow">
+        <section className={STYLE.SEC_STYLE}>
+            <h1 className={STYLE.H1_STYLE}>Home</h1>
+
+            <p className={STYLE.TEXT_STYLE}>You are logged in!</p>
+
+            <Link to="/editor" className={STYLE.LINK_STYLE}>Go to the Editor page</Link>
+     
+            <Link to="/admin" className={STYLE.LINK_STYLE}>Go to the Admin page</Link>
+        
+            <Link to="/lounge" className={STYLE.LINK_STYLE}>Go to the Lounge</Link>
+         
+            <Link to="/linkpage" className={STYLE.LINK_STYLE}>Go to the link page</Link>
+
+            <div className={STYLE.LINK_STYLE}>
                 <button onClick={logout}>Sign Out</button>
             </div>
         </section>
