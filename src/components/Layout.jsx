@@ -7,13 +7,13 @@ function Layout() {
     <Background>
       <main className="flex flex-col justify-center items-center min-h-screen">
         <Outlet />
-        <div className="starField fixed top-0 left-0 w-full h-full z-1">
+      </main>
+      <div className="starField fixed top-0 left-0 w-full h-full z-1">
           <div className="layer"></div>
           <div className="layer"></div>
           <div className="layer"></div>
           <div className="layer"></div>
         </div>
-      </main>
     </Background>
   );
 }
